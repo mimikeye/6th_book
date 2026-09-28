@@ -23,7 +23,9 @@ public class BookService {
                 null,
                 request.title(),
                 request.author(),
-                request.price()
+                request.price(),
+                request.category(),
+                request.isbn()
         );
 
         Book saved = repository.save(book);
@@ -32,7 +34,9 @@ public class BookService {
                 saved.getId(),
                 saved.getTitle(),
                 saved.getAuthor(),
-                saved.getPrice()
+                saved.getPrice(),
+                saved.getCategory(),
+                saved.getIsbn()
         );
     }
 
@@ -43,7 +47,9 @@ public class BookService {
                         book.getId(),
                         book.getTitle(),
                         book.getAuthor(),
-                        book.getPrice()
+                        book.getPrice(),
+                        book.getCategory(),
+                        book.getIsbn()
                 ))
                 .toList();
     }
@@ -59,7 +65,9 @@ public class BookService {
                 book.getId(),
                 book.getTitle(),
                 book.getAuthor(),
-                book.getPrice()
+                book.getPrice(),
+                book.getCategory(),
+                book.getIsbn()
         );
     }
 
@@ -73,6 +81,8 @@ public class BookService {
         book.setTitle(request.title());
         book.setAuthor(request.author());
         book.setPrice(request.price());
+        book.setCategory(request.category());
+        book.setIsbn(request.isbn());
 
         Book updated = repository.update(book);
 
@@ -80,7 +90,9 @@ public class BookService {
                 updated.getId(),
                 updated.getTitle(),
                 updated.getAuthor(),
-                updated.getPrice()
+                updated.getPrice(),
+                updated.getCategory(),
+                updated.getIsbn()
         );
     }
 
