@@ -12,25 +12,34 @@ public class MemoryBookRepository implements BookRepository {
     @Override
     public Book save(Book book) {
         // TODO 1: 새로운 id를 생성하고 store에 저장한 뒤 book을 반환하세요.
-        return null;
+        Long id = ++sequence;
+        book.setId(id);
+        store.put(id, book);
+        return book;
     }
+
     @Override
     public List<Book> findAll() {
         // TODO 2: 저장된 모든 Book을 List로 반환하세요.
-        return List.of();
+        return new ArrayList<>(store.values());
     }
+
     @Override
     public Optional<Book> findById(Long id) {
         // TODO 3: id에 해당하는 Book을 Optional로 반환하세요.
-        return Optional.empty();
+        return Optional.ofNullable(store.get(id));
     }
+
     @Override
     public Book update(Book book) {
         // TODO 4: 같은 id의 Book을 수정하여 저장하고 반환하세요.
-        return null;
+        store.put(book.getId(), book);
+        return book;
     }
+
     @Override
     public void deleteById(Long id) {
         // TODO 5: id에 해당하는 Book을 삭제하세요.
+        store.remove(id);
     }
 }
