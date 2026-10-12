@@ -17,6 +17,7 @@ public class BookWebController {
 
     public BookWebController(BookService bookService) {
         this.bookService = bookService;
+        System.out.println("BookWebController 생성 완료");
     }
 
     @GetMapping("/books")
@@ -29,6 +30,8 @@ public class BookWebController {
     public String newForm() {
         return "books/form";
     }
+
+
 
     @PostMapping("/books")
     public String create(@ModelAttribute BookRequest request) {
